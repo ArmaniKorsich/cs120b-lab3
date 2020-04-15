@@ -18,17 +18,17 @@ int main(void) {
 	DDRD = 0x00; PORTD = 0xFF;
 
 	unsigned short weight = 0x00;
-	unsigned char B0 = 0x00;
 	/* Insert your solution below */
     while (1) {
 	weight = 0x00;	
-	B0 = 0x00;
 	PORTB = 0x00;	
 
 	weight = PIND;
 	weight = weight  << 1;
-	B0 = (PINB & 0x01);
-	weight = weight | B0;
+	if ((PORTB & 0x01) == 0x01)
+	{
+		weight = weight + 1;
+	}
 
 	if (weight >= 70)
 	{
@@ -42,7 +42,6 @@ int main(void) {
 	{
 		PORTB = PORTB & 0xF9; //clear bits 1 and 2.
 	}
-	PORTB = PORTB | B0;
 	
     }
 	

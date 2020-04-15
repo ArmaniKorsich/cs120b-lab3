@@ -39,14 +39,14 @@ expectPORTB 0x04
 checkResult
 
 # Example test:
-test "PINB: 0x01; PIND: 0x0F => PORTB: 0b0000 0101"
+test "PINB: 0x01; PIND: 0x02 => PORTB: 0"
 # Set inputs
 setPINB 0x01
-setPIND 0x0F
+setPIND 0x02
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTB 0x05
+expectPORTB 0x00
 # Check pass/fail
 checkResult
 
@@ -70,7 +70,7 @@ setPIND 0x3F
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTB 0x03
+expectPORTB 0x02
 # Check pass/fail
 checkResult
 # Add tests below
