@@ -46,7 +46,7 @@ setPIND 0x0F
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTB 0x05
+expectPORTB 0x04
 # Check pass/fail
 checkResult
 
@@ -70,7 +70,7 @@ setPIND 0x3F
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTB 0x03
+expectPORTB 0x02
 # Check pass/fail
 checkResult
 # Add tests below
