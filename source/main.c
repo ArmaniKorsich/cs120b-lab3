@@ -14,33 +14,35 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-	DDRA = 0x00; PORTA = 0xFF;
-	DDRB = 0x00; PORTB = 0XFF;
-	DDRC = 0xFF; PORTC = 0x00;
+	DDRB = 0xFE; PORTB = 0X00;
+	DDRD = 0x00; PORTD = 0xFF;
 
-	unsigned char count = 0x00;
-	unsigned short i = 0x01;
-    /* Insert your solution below */
+	unsigned short weight = 0x00;
+	/* Insert your solution below */
     while (1) {
+	weight = 0x00;	
+	PORTB = 0x00;	
 
-	count = 0x00;
-	PORTC = 0x00;
-
-	for (i = 0x01; i <= 0x80; i = 2 * i)
+	weight = PIND;
+	weight = weight  << 1;
+	if ((PORTB & 0x01) == 0x01)
 	{
-		if ((PINA & i) == i)
-		{
-			count = count + 1;
-		}
-		if ((PINB & i) == i)
-		{
-			count = count + 1;
-		}		
-
+		weight = weight + 1;
 	}
 
-	PORTC = count;
+	if (weight >= 70)
+	{
+		PORTB = PORTB | 0x02; 
+	}
+	else if (weight >= 5)
+	{
+		PORTB = PORTB | 0x04;
+	}
+	else
+	{
+		PORTB = PORTB & 0xF9; //clear bits 1 and 2.
+	}
 	
     }
-    return 1;
+	
 }

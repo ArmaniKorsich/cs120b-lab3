@@ -27,44 +27,56 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Example test:
-test "PINA: 0x01, PINB: 0x03 => PORTC: 3"
+test "PINB 0x00; PIND: 0x0F => PORTB: 0b0000 0100"
 # Set inputs
-setPINA 0x01
-setPINB 0x03
-# Continue for several ticks
-continue 2
-# Set expect values
-expectPORTC 3
-# Check pass/fail
-checkResult
-
-# Example test:
-test "PINA: 0xFF, PINB: 0x00 => PORTC: 8"
-# Set inputs
-setPINA 0xFF
 setPINB 0x00
+setPIND 0x0F
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTC 8
+expectPORTB 0x04
 # Check pass/fail
 checkResult
 
 # Example test:
-test "PINA: 0xF0, PINB: 0x0F => PORTC: 8"
+test "PINB: 0x01; PIND: 0x02 => PORTB: 0"
 # Set inputs
-setPINA 0xF0
-setPINB 0x0F
+setPINB 0x01
+setPIND 0x02
 # Continue for several ticks
 continue 2
 # Set expect values
-expectPORTC 8
+expectPORTB 0x00
 # Check pass/fail
 checkResult
 
+# Example test:
+test "PINB: 0x00; PIND 0x3F => PORTB: 0b0000 0010"
+# Set inputs
+setPINB 0x00
+setPIND 0x3F
+# Continue for several ticks
+continue 2
+# Set expect values
+expectPORTB 0x02
+# Check pass/fail
+checkResult
 
-
+# Example test:
+test "PINB: 0x01; PIND: 0x3F => PORTB: 0b0000 0011"
+# Set inputs
+setPINB 0x01
+setPIND 0x3F
+# Continue for several ticks
+continue 2
+# Set expect values
+expectPORTB 0x02
+# Check pass/fail
+checkResult
 # Add tests below
+
+
+
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
