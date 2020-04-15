@@ -81,7 +81,13 @@ int main(void) {
 		tmpC = tmpC | 2;
 		tmpC = tmpC | 1;	
 	}
-		
+	
+	//pa4 key, pa5 driver,m pa6 seatbelt
+	if ((PINA & 0x70) == 0x30)
+	{
+		tmpC = tmpC | 128; 
+	}
+	
 	PORTC = tmpC;
 
     }
