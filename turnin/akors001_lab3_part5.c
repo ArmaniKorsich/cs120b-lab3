@@ -42,7 +42,6 @@ int main(void) {
 	{
 		PORTB = PORTB & 0xF9; //clear bits 1 and 2.
 	}
-	PORTB = PORTB | B0;
 	
     }
 	
