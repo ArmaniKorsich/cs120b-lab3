@@ -40,7 +40,11 @@ int main(void) {
 
 	
 	//
-	if (level >= 1 && level <= 2)
+	if (level == 0)
+	{
+		tmpC = tmpC | 64;	
+	}
+	else if (level >= 1 && level <= 2)
 	{
 		tmpC = tmpC | 64;
 		tmpC  = tmpC  | 32;	
